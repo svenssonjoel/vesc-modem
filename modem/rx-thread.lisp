@@ -216,7 +216,7 @@
     ;          27 = Connect failed
     (var vars (str-split resp ","))
     (var cid (to-i (str-to-i (ix vars 0))))
-    (var result (to-i (str-to-i (ix vars 0))))
+    (var result (to-i (str-to-i (ix vars 1))))
     (setassoc modem-state 'tcp-cid-states
         (setix (assoc modem-state 'tcp-cid-states) cid (match result
             (0 'connected)
@@ -311,7 +311,7 @@
     (match (length vars)
         (2 (progn
             (var code (to-i (str-to-i (ix vars 0))))
-            (var data-len (to-i (str-to-i (ix vars 0))))
+            (var data-len (to-i (str-to-i (ix vars 1))))
             (setassoc modem-state 'fs-dl-code code)
             (setassoc modem-state 'fs-dl-size data-len)
         ))
